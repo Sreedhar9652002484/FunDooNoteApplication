@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BusinessLayer.Services
 {
-    public class UserBusiness
+    public class UserBusiness : IUserBusiness
     {
         private readonly IUserRepo _userRepo;
 

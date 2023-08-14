@@ -7,7 +7,7 @@ using System.Text;
 
 namespace RepoLayer.Services
 {
-    public class UserRepo
+    public class UserRepo:IUserRepo
     {
         private readonly FunDoContext funDoContext;
 

@@ -4,6 +4,8 @@ using RepoLayer.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using RepoLayer.Interface;
+
 
 namespace RepoLayer.Services
 {

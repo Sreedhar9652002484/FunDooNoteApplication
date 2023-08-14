@@ -49,3 +49,8 @@ C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\obj\Debug\netcoreapp3.1\F
 C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\obj\Debug\netcoreapp3.1\FunDooNoteApp.dll
 C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\obj\Debug\netcoreapp3.1\FunDooNoteApp.pdb
 C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\obj\Debug\netcoreapp3.1\FunDooNoteApp.genruntimeconfig.cache
+C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\obj\Debug\netcoreapp3.1\FunDooNoteApp.MvcApplicationPartsAssemblyInfo.cs

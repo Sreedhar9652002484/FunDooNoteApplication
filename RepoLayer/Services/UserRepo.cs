@@ -1,13 +1,16 @@
 ﻿using CommonLayer.Model;
+using CommonLayer.Models;
 using RepoLayer.Context;
 using RepoLayer.Entity;
+using RepoLayer.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RepoLayer.Services
 {
-    public class UserRepo
+    public class UserRepo: IUserRepo
     {
         private readonly FunDoContext funDoContext;
 
@@ -39,6 +42,24 @@ namespace RepoLayer.Services
                
             }
             
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public UserEntity Login(UserLoginModel model)
+        {
+            try
+            {
+                var user=funDoContext.User.FirstOrDefault(u=>u.Email == model.Email && u.Password==model.Password);
+                if(user != null)
+                {
+
+                    return user;
+                }
+                return null;
+            }
             catch (Exception)
             {
 

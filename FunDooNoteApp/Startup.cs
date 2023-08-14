@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using RepoLayer.Context;
 using RepoLayer.Interface;
 using RepoLayer.Services;
@@ -37,7 +38,16 @@ namespace FunDooNoteApp
             services.AddTransient<IUserBusiness, UserBusiness>();
             services.AddTransient<IUserRepo, UserRepo>();
 
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("V1", new OpenApiInfo
+                {
+                    Title = "FunDooNoteApplication",
+                    Version = "1.0",
+                    Description = "Notes Application"
 
+                });
+            });
 
         }
 
@@ -59,6 +69,9 @@ namespace FunDooNoteApp
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/V1/swagger.json", "FunDooNote V1"); });
         }
     }
 }

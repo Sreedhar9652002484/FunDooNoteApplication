@@ -14,7 +14,7 @@ using System.Text;
 
 namespace RepoLayer.Services
 {
-    public class UserRepo: IUserRepo
+    public class UserRepo : IUserRepo
     {
         private readonly FunDoContext funDoContext;
         private readonly IConfiguration configuration;
@@ -45,9 +45,9 @@ namespace RepoLayer.Services
                 {
                     return null;
                 }
-               
+
             }
-            
+
             catch (Exception)
             {
 
@@ -77,11 +77,11 @@ namespace RepoLayer.Services
         {
             try
             {
-                var user=funDoContext.User.FirstOrDefault(u=>u.Email == model.Email && u.Password==model.Password);
-                if(user != null)
+                var user = funDoContext.User.FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+                if (user != null)
                 {
 
-                    var token=GenerateJwtToken(user.Email, user.UserId);
+                    var token = GenerateJwtToken(user.Email, user.UserId);
                     return token;
                 }
                 return null;
@@ -92,22 +92,18 @@ namespace RepoLayer.Services
                 throw;
             }
         }
-        public string ForgetPassword(string email, string NewPassword, string ConfirmPassword)
+        public string ForgetPassword(ForgetPassWordModel model)
         {
             try
             {
-                var user = funDoContext.User.FirstOrDefault(u => u.Email == email);
-                if(user != null)
+                var user = funDoContext.User.FirstOrDefault(u => u.Email == model.Email);
+                if (user != null)
                 {
-                    if(NewPassword == ConfirmPassword)
-                    {
-                        user.Password = ConfirmPassword;
-                       funDoContext.User.Update(user);
-                        funDoContext.SaveChanges();
-                        return user.Password;
-                    }
-                    return null;
-                   
+
+                    var token = GenerateJwtToken(user.Email, user.UserId);
+                    MSMQ mSMQ = new MSMQ();
+                    mSMQ.sendData2Queue(token);
+                    return token;
                 }
                 return null;
 
@@ -119,6 +115,32 @@ namespace RepoLayer.Services
             }
 
         }
-       
+        public bool ResetPassword(string email, string NewPassword, string ConfirmPassword)
+        {
+
+            try
+            {
+                var user = funDoContext.User.FirstOrDefault(u => u.Email == email);
+                if (user != null)
+                {
+                    if (NewPassword == ConfirmPassword)
+                    {
+                        user.Password = ConfirmPassword;
+                        funDoContext.User.Update(user);
+                        funDoContext.SaveChanges();
+                        return true;
+                    }
+                    
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
+
 }

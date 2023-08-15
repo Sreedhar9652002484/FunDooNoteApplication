@@ -1,9 +1,11 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer.Model;
 using CommonLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RepoLayer.Interface;
+using System.Security.Claims;
 
 namespace FunDooNoteApp.Controllers
 {
@@ -51,19 +53,43 @@ namespace FunDooNoteApp.Controllers
         }
         [Route("ForgetPassword")]
 
-        [HttpPatch]
-        public IActionResult forgetPass(string email, string NewPassword, string ConfirmPassword)
+        [HttpPost]
+        public IActionResult forgetPass(ForgetPassWordModel model)
         {
-            var result = _userBusiness.ForgetPassword(email,NewPassword,ConfirmPassword);
+            var result = _userBusiness.ForgetPassword(model);
             if (result != null)
             {
-                return this.Ok(new { Success = true, Message = "Password Reset Succesfull" });
+                return this.Ok(new { Success = true, Message = "Token sent Succesfully" });
             }
             else
             {
-                return this.NotFound(new { success = false, Message = "Invalid Credentials" });
+                return this.NotFound(new { success = false, Message = "Invalid Email" });
 
             }
+
+        }
+
+        [Authorize]
+        [Route("ResetPassword")]
+
+        [HttpPut]
+        public IActionResult ResetPassword(string NewPassword, string ConfirmPassword)
+        {
+            var email=User.FindFirst(ClaimTypes.Email).Value;
+            if (email != null)
+            {
+                var result = _userBusiness.ResetPassword(email, NewPassword, ConfirmPassword);
+                if (result == true)
+                {
+                    return this.Ok(new { Success = true, Message = "Password Reset Succesfull" });
+                }
+                else
+                {
+                    return this.NotFound(new { success = false, Message = "Invalid Credentials" });
+
+                }
+            }
+            return null;
 
         }
     }

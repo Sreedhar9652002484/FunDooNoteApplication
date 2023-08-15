@@ -41,6 +41,19 @@ namespace BusinessLayer.Services
                 throw;
             }
         }
+        public string ForgetPassword(string email, string NewPassword, string ConfirmPassword)
+        {
+            try
+            {
+                return  _userRepo.ForgetPassword(email, NewPassword, ConfirmPassword);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
 
     }

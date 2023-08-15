@@ -92,7 +92,33 @@ namespace RepoLayer.Services
                 throw;
             }
         }
+        public string ForgetPassword(string email, string NewPassword, string ConfirmPassword)
+        {
+            try
+            {
+                var user = funDoContext.User.FirstOrDefault(u => u.Email == email);
+                if(user != null)
+                {
+                    if(NewPassword == ConfirmPassword)
+                    {
+                        user.Password = ConfirmPassword;
+                       funDoContext.User.Update(user);
+                        funDoContext.SaveChanges();
+                        return user.Password;
+                    }
+                    return null;
+                   
+                }
+                return null;
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
        
     }
 }

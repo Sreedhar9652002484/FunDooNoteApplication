@@ -49,5 +49,22 @@ namespace FunDooNoteApp.Controllers
 
             }
         }
+        [Route("ForgetPassword")]
+
+        [HttpPatch]
+        public IActionResult forgetPass(string email, string NewPassword, string ConfirmPassword)
+        {
+            var result = _userBusiness.ForgetPassword(email,NewPassword,ConfirmPassword);
+            if (result != null)
+            {
+                return this.Ok(new { Success = true, Message = "Password Reset Succesfull" });
+            }
+            else
+            {
+                return this.NotFound(new { success = false, Message = "Invalid Credentials" });
+
+            }
+
+        }
     }
 }

@@ -49,6 +49,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -69,9 +73,17 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Microsoft.Owin.Host.SystemWeb": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.1, )"
             }
           },
           "imports": [
@@ -135,6 +147,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -155,9 +171,17 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Microsoft.Owin.Host.SystemWeb": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.1, )"
             }
           },
           "imports": [
@@ -226,6 +250,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -246,9 +274,17 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Microsoft.Owin.Host.SystemWeb": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.1, )"
             }
           },
           "imports": [
@@ -319,6 +355,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -339,9 +379,17 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Microsoft.Owin.Host.SystemWeb": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.1, )"
             }
           },
           "imports": [

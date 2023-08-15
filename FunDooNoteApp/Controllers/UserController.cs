@@ -41,7 +41,7 @@ namespace FunDooNoteApp.Controllers
             var result = _userBusiness.Login(model);
             if (result != null)
             {
-                return this.Ok(new { Success = true, Message = "User Login Succesfull" });
+                return this.Ok(new { Success = true, Message = "User Login Succesfull", data=result});
             }
             else
             {

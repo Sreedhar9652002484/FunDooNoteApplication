@@ -14,7 +14,9 @@ namespace RepoLayer.Context
         {
         }
         public Microsoft.EntityFrameworkCore.DbSet<UserEntity> User { get; set; }
-       
+        public Microsoft.EntityFrameworkCore.DbSet<NotesEntity> Note { get; set; }
+
+
 
     }
 

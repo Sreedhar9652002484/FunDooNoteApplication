@@ -43,6 +43,9 @@ namespace FunDooNoteApp
             services.AddTransient<IUserBusiness, UserBusiness>();
             services.AddTransient<IUserRepo, UserRepo>();
 
+            services.AddTransient<INotesRepo, NotesRepo>();
+            services.AddTransient<INotesBusiness, NotesBusiness>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("V1", new OpenApiInfo
@@ -97,8 +100,8 @@ namespace FunDooNoteApp
             });
         }
 
-            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

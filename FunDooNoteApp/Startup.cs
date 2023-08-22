@@ -6,14 +6,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using RepoLayer.Context;
 using Microsoft.OpenApi.Models;
 using RepoLayer.Context;
 using RepoLayer.Interface;
@@ -23,14 +21,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.SqlServer.Update.Internal;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using CloudinaryDotNet;
+using Microsoft.AspNetCore.Connections;
 
-namespace FunDooNoteApp
+
+//using Swashbuckle.AspNetCore.Examples;
+
+namespace FunDooNoteApplication
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -39,22 +45,23 @@ namespace FunDooNoteApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FunDoContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:FunDoo"]));
+
             services.AddControllers();
             services.AddTransient<IUserBusiness, UserBusiness>();
             services.AddTransient<IUserRepo, UserRepo>();
+            services.TryAddTransient<INotesBusiness, NotesBusiness>();
+            services.TryAddTransient<INotesRepo, NotesRepo>();
+            services.AddTransient<FileService, FileService>();
 
-            services.AddTransient<INotesRepo, NotesRepo>();
-            services.AddTransient<INotesBusiness, NotesBusiness>();
 
+
+            //Swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("V1", new OpenApiInfo
-                {
-                    Title = "FunDooNoteApplication",
-                    Version = "1.0",
-                    Description = "Notes Application"
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FunDoNote", Version = "v1" });
 
-                });
+              
+                // Configure Swagger to include the authorization header
                 var securitySchema = new OpenApiSecurityScheme
                 {
                     Description = "Using the Authorization header with the Bearer scheme.",
@@ -98,6 +105,19 @@ namespace FunDooNoteApp
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
+            //Clodinary
+            IConfigurationSection cloudinarySettings = Configuration.GetSection("CloudinarySettings");
+            Account cloudinaryAccount = new Account(
+                cloudinarySettings["CloudName"],
+                cloudinarySettings["ApiKey"],
+                cloudinarySettings["ApiSecret"]
+            );
+
+            Cloudinary cloudinary = new Cloudinary(cloudinaryAccount);
+            services.AddSingleton(cloudinary);
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -112,16 +132,20 @@ namespace FunDooNoteApp
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
+
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "FunDoNote v1");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/V1/swagger.json", "FunDooNote V1"); });
         }
     }
 }

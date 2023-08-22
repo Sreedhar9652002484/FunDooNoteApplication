@@ -130,5 +130,119 @@ namespace FunDooNote.Controllers
             }
             return null;
         }
+        [Authorize]
+        [Route("SetColour")]
+        [HttpPatch]
+        public IActionResult AddColour(long NotesId, string Colour)
+        {
+            long userId = Convert.ToInt64(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+            if (userId != null)
+            {
+                var result = notesBusiness.Colour(NotesId, userId, Colour);
+                if (result != null)
+                {
+                    return this.Ok(new { success = true, Message = "Colour Set Successful" });
+                }
+                else
+                {
+                    return this.BadRequest(new { success = false, Message = "UnSuccessful", Data = result });
+
+                }
+            }
+            return null;
+        }
+        [Authorize]
+        // [Route("AddImage")]
+        [HttpPost("AddImage")]
+        public async Task<IActionResult> AddImage(long notedId, string item, IFormFile imageFile)
+        {
+            try
+            {
+                long userId = Convert.ToInt64(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+                if (userId != null)
+                {
+                    // Call the business layer to handle the image upload
+                    var result = await notesBusiness.AddImage(notedId, userId,imageFile);
+
+                    if (result.Item1 == 1)
+                    {
+                        return Ok(new { success = true, message = "Image Uploaded successfully" });
+                    }
+                    else
+                    {
+                        return BadRequest(new { success = false, message = result.Item2 });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "An error occurred: " + ex.Message });
+            }
+            return null;
+        }
+
+        [Authorize]
+        [Route("Archive")]
+        [HttpPost]
+        public IActionResult Archive(long NotesId)
+        {
+            long userId = Convert.ToInt64(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+            if (userId != null)
+            {
+                var result = notesBusiness.Archive(NotesId, userId);
+                if (result == true)
+                {
+                    return this.Ok(new { success = true, Message = "Archive Notes Successful" });
+                }
+                else
+                {
+                    return this.BadRequest(new { success = false, Message = "UnSuccessful", Data = result });
+
+                }
+            }
+            return null;
+        }
+        [Authorize]
+        [Route("Pin")]
+        [HttpPost]
+        public IActionResult Pin(long NotesId)
+        {
+            long userId = Convert.ToInt64(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+            if (userId != null)
+            {
+                var result = notesBusiness.Pin(NotesId, userId);
+                if (result == true)
+                {
+                    return this.Ok(new { success = true, Message = "Pin Notes Successful" });
+                }
+                else
+                {
+                    return this.BadRequest(new { success = false, Message = "UnSuccessful", Data = result });
+
+                }
+            }
+            return null;
+        }
+        [Authorize]
+        [Route("Trash")]
+        [HttpPost]
+        public IActionResult MoveToTash(long NotesId)
+        {
+            long userId = Convert.ToInt64(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+            if (userId != null)
+            {
+                var result = notesBusiness.MoveToTrash(NotesId, userId);
+                if (result == true)
+                {
+                    return this.Ok(new { success = true, Message = "Moved To Trash Successful" });
+                }
+                else
+                {
+                    return this.BadRequest(new { success = false, Message = "UnSuccessful", Data = result });
+
+                }
+            }
+            return null;
+        }
     }
 }

@@ -69,3 +69,4 @@ C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\S
 C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
 C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\Experimental.System.Messaging.dll
+C:\Users\acer\source\repos\FunDooNoteApp\FunDooNoteApp\bin\Debug\netcoreapp3.1\CloudinaryDotNet.dll

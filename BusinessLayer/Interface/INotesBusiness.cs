@@ -20,5 +20,12 @@ namespace BusinessLayer.Interface
         public string UpdateNote(long NotesId, string Notes, long userId);
 
         public bool DeleteNote(long NotesId, long userId);
+        public string Colour(long NotesId,  long userId, string colour);
+        public Task<Tuple<int, string>> AddImage(long NotesId, long userId, IFormFile imageFile);
+
+        public bool Archive(long NotesId, long userId);
+
+        public bool Pin(long NotesId, long userId);
+        public bool MoveToTrash(long NotesId, long userId);
     }
 }

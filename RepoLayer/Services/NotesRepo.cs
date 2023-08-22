@@ -1,4 +1,6 @@
 ﻿
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using CommonLayer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -24,12 +26,16 @@ namespace RepoLayer.Services
 
         private readonly FunDoContext funDoContext;
         private readonly IConfiguration configuration;
-        
-        public NotesRepo(FunDoContext funDoContext, IConfiguration configuration)
+        private readonly Cloudinary _cloudinary;
+        private readonly FileService _fileService;
+
+        public NotesRepo(FunDoContext funDoContext, IConfiguration configuration, Cloudinary cloudinary, FileService fileService)
         {
             this.funDoContext = funDoContext;
             this.configuration = configuration;
-           
+            this._cloudinary = cloudinary;
+            this._fileService = fileService;
+
         }
 
 
@@ -38,13 +44,13 @@ namespace RepoLayer.Services
 
             try
             {
-               
+
 
                 NotesEntity notesEntity = new NotesEntity();
                 notesEntity.Title = model.Title;
                 notesEntity.TakeNote = model.TakeaNote;
                 notesEntity.UserId = userId;
-               
+
                 funDoContext.Note.Add(notesEntity);
                 funDoContext.SaveChanges();
 
@@ -61,7 +67,7 @@ namespace RepoLayer.Services
                 throw ex;
             }
         }
-      
+
 
         public List<NotesEntity> GetAllNotes(long userId)
         {
@@ -144,5 +150,130 @@ namespace RepoLayer.Services
                 throw;
             }
         }
+        public string Colour(long NotesId, string Colour, long userId)
+        {
+            try
+            {
+                var note = funDoContext.Note.FirstOrDefault(data => data.NoteId == NotesId && data.UserId == userId);
+                if (note != null)
+                {
+                    Colour = note.Colour;
+                    funDoContext.Note.Update(note);
+                    funDoContext.SaveChanges();
+                    return Colour;
+                }
+                return null;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<Tuple<int, string>> AddImage(long NotesId, long userId, IFormFile image)
+        {
+            try
+            {
+                var result = funDoContext.Note.FirstOrDefault(u => u.NoteId == NotesId);
+                if (result != null)
+                {
+                    var fileServiceResult = await _fileService.SaveImage(image);
+                    if (fileServiceResult.Item1 == 0)
+                    {
+                        return new Tuple<int, string>(0, fileServiceResult.Item2);
+                    }
+                    var uploadImage = new ImageUploadParams
+                    {
+                        File = new FileDescription(image.FileName, image.OpenReadStream()),
+                    };
+                    ImageUploadResult uploadResult = await _cloudinary.UploadAsync(uploadImage);
+                    string imgUrl = uploadResult.SecureUrl.AbsoluteUri;
+                    result.Image = imgUrl;
+                    funDoContext.Note.Update(result);
+                    funDoContext.SaveChanges();
+
+                    return new Tuple<int, string>(1, "Image Uploaded Succesfully");
+
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                return new Tuple<int, string>(0, "An error occurred: " + ex.Message);
+            }
+
+        }
+        public bool Archive(long NotesId, long userId)
+
+        {
+            try
+            {
+                var notes = funDoContext.Note.FirstOrDefault(u => u.NoteId == NotesId && u.UserId == userId);
+                if (notes != null)
+                {
+                    notes.isArchive = true;
+
+                    funDoContext.Note.Update(notes);
+                    funDoContext.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool Pin(long NotesId, long userId)
+        {
+            try
+            {
+                var notes = funDoContext.Note.FirstOrDefault(u => u.NoteId == NotesId && u.UserId == userId);
+                if (notes != null)
+                {
+                    notes.isPin = true;
+                    funDoContext.Note.Update(notes);
+                    funDoContext.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool MoveToTrash(long NotesId, long userId)
+        {
+            try
+            {
+                var notes = funDoContext.Note.FirstOrDefault(u => u.NoteId == NotesId && u.UserId == userId);
+                if (notes != null)
+                {
+                    notes.isTrash = true;
+                    funDoContext.Note.Update(notes);
+                    funDoContext.SaveChanges();
+
+
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+       
+
+        
+
     }
+
 }

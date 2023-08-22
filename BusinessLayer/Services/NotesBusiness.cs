@@ -86,6 +86,70 @@ namespace BusinessLayer.Services
             }
 
         }
-       
+        public string Colour(long NotesId, long userId, string colour)
+        {
+            try
+            {
+                return _notesRepo.Colour(NotesId, colour, userId);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<Tuple<int, string>> AddImage(long NotesId, long userId,IFormFile imageFile)
+        {
+            try
+            {
+                // Call the repository method and await its result
+                return await _notesRepo.AddImage(NotesId, userId,imageFile);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public bool Archive(long NotesId, long userId)
+        {
+            try
+            {
+                return _notesRepo.Archive(NotesId, userId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool Pin(long NotesId, long userId)
+        {
+            try
+            {
+                return _notesRepo.Pin(NotesId, userId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool MoveToTrash(long NotesId, long userId)
+        {
+            try
+            {
+                return _notesRepo.MoveToTrash(NotesId, userId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+      
+
     }
 }

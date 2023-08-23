@@ -76,6 +76,10 @@
               "target": "Package",
               "version": "[4.2.2, )"
             },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -172,6 +176,10 @@
             "Microsoft.Owin.Host.SystemWeb": {
               "target": "Package",
               "version": "[4.2.2, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -277,6 +285,10 @@
             "Microsoft.Owin.Host.SystemWeb": {
               "target": "Package",
               "version": "[4.2.2, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

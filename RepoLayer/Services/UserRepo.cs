@@ -2,11 +2,13 @@
 using CommonLayer.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using RepoLayer.Context;
 using RepoLayer.Entity;
 using RepoLayer.Interface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -18,11 +20,13 @@ namespace RepoLayer.Services
     {
         private readonly FunDoContext funDoContext;
         private readonly IConfiguration configuration;
+        private readonly RabbitMQPublisher rabbitMQPublisher;
 
-        public UserRepo(FunDoContext funDoContext, IConfiguration configuration)
+        public UserRepo(FunDoContext funDoContext, IConfiguration configuration, RabbitMQPublisher  rabbitMQPublisher)
         {
             this.funDoContext = funDoContext;
             this.configuration = configuration;
+            this.rabbitMQPublisher = rabbitMQPublisher;
         }
         public UserEntity UserReg(UserRegModel model)
         {
@@ -39,6 +43,10 @@ namespace RepoLayer.Services
                 funDoContext.SaveChanges();
                 if (userEntity != null)
                 {
+                    var message = new UserRegistrationMessage { Email = userEntity.Email };
+                    var jsonmessage=JsonConvert.SerializeObject(message);
+                    rabbitMQPublisher.PublishMessage("User-Registration-Queue", jsonmessage);
+                    Console.WriteLine($"Message sent to queue: {jsonmessage}");
                     return userEntity;
                 }
                 else

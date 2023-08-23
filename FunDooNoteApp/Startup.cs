@@ -25,6 +25,7 @@ using Microsoft.EntityFrameworkCore.SqlServer.Update.Internal;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using CloudinaryDotNet;
 using Microsoft.AspNetCore.Connections;
+using RabbitMQ.Client;
 
 
 //using Swashbuckle.AspNetCore.Examples;
@@ -53,6 +54,12 @@ namespace FunDooNoteApplication
             services.TryAddTransient<INotesRepo, NotesRepo>();
             services.AddTransient<FileService, FileService>();
 
+            services.AddSingleton<RabbitMQPublisher>(_ => new RabbitMQPublisher(new ConnectionFactory
+            {
+                HostName = Configuration["RabbitMQSettings:HostName"],
+                UserName = Configuration["RabbitMQSettings:UserName"],
+                Password = Configuration["RabbitMQSettings:Password"]
+            }));
 
 
             //Swagger

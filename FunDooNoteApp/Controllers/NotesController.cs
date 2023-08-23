@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using System.Net;
 using System.Runtime.CompilerServices;
+using RepoLayer.Entity;
+using System.Collections.Generic;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 
 namespace FunDooNote.Controllers
 {
@@ -18,10 +22,12 @@ namespace FunDooNote.Controllers
     public class NotesController : Controller
     {
         private readonly INotesBusiness notesBusiness;
+        private readonly IDistributedCache distributedCache;
 
-        public NotesController(INotesBusiness notesBusiness)
+        public NotesController(INotesBusiness notesBusiness, IDistributedCache distributedCache)
         {
             this.notesBusiness = notesBusiness;
+            this.distributedCache = distributedCache;
         }
 
         [Authorize]
@@ -244,5 +250,42 @@ namespace FunDooNote.Controllers
             }
             return null;
         }
+        [Authorize]
+        [HttpGet("redis")]
+        public async Task<IActionResult> GetAllCustomersUsingRedisCache()
+        {
+            var cacheKey = "customerList";
+            string serializedCustomerList;
+            var noteList = new List<NotesEntity>();
+            var redisCustomerList = await distributedCache.GetStringAsync(cacheKey);
+            if (redisCustomerList != null)
+            {
+                //serializedCustomerList = Encoding.UTF8.GetString(redisCustomerList);
+                noteList = JsonConvert.DeserializeObject<List<NotesEntity>>(redisCustomerList);
+            }
+            else
+            {
+                long userId = Convert.ToInt64(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+
+                noteList = notesBusiness.GetAllNotes(userId);
+                serializedCustomerList = JsonConvert.SerializeObject(noteList);
+               
+                var options = new DistributedCacheEntryOptions()
+                .SetAbsoluteExpiration(DateTime.Now.AddMinutes(10))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(2));
+                await distributedCache.SetStringAsync(cacheKey, serializedCustomerList, options);
+            }
+            if (noteList != null)
+            {
+                return this.Ok(new { success = true, Message = "Get All Notes Successful", Data = noteList });
+            }
+            else
+            {
+                return this.NotFound(new { success = false, Message = "UnSuccessful"});
+
+            }
+            
+        }
+
     }
 }

@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.SqlServer.Update.Internal;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using CloudinaryDotNet;
-using Microsoft.AspNetCore.Connections;
+
 using RabbitMQ.Client;
 
 
@@ -123,7 +123,10 @@ namespace FunDooNoteApplication
             Cloudinary cloudinary = new Cloudinary(cloudinaryAccount);
             services.AddSingleton(cloudinary);
 
-
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "localhost:6379";
+            });
 
         }
 

@@ -282,6 +282,14 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Microsoft.Extensions.Caching.Redis": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
             "Microsoft.Owin.Host.SystemWeb": {
               "target": "Package",
               "version": "[4.2.2, )"

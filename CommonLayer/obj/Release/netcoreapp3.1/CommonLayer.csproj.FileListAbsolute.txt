@@ -1,0 +1,13 @@
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\bin\Release\netcoreapp3.1\CommonLayer.deps.json
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\bin\Release\netcoreapp3.1\CommonLayer.runtimeconfig.json
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\bin\Release\netcoreapp3.1\CommonLayer.runtimeconfig.dev.json
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\bin\Release\netcoreapp3.1\CommonLayer.dll
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\bin\Release\netcoreapp3.1\CommonLayer.pdb
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.csproj.AssemblyReference.cache
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.AssemblyInfoInputs.cache
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.AssemblyInfo.cs
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.csproj.CoreCompileInputs.cache
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.dll
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.pdb
+C:\Users\SREEDHAR\Desktop\repos\FunDooNoteApp\CommonLayer\obj\Release\netcoreapp3.1\CommonLayer.genruntimeconfig.cache

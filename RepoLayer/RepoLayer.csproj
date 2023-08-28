@@ -24,7 +24,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.2" />
     <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
   </ItemGroup>
 

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj": {}
+    "D:\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj": {
+    "D:\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "D:\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\BusinessLayer\\obj\\",
+        "projectPath": "D:\\repos\\FunDooNoteApp\\BusinessLayer\\BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\SREEDHAR\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\FunDooNoteApp\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SREEDHAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj": {
-                "projectPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj"
+              "D:\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj": {
+                "projectPath": "D:\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj"
               }
             }
           }
@@ -80,10 +80,6 @@
               "target": "Package",
               "version": "[6.5.0, )"
             },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
-            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.32.1, )"
@@ -105,21 +101,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.413\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj": {
+    "D:\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj",
+        "projectUniqueName": "D:\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj",
         "projectName": "CommonLayer",
-        "projectPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\CommonLayer\\obj\\",
+        "projectPath": "D:\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj",
+        "packagesPath": "C:\\Users\\SREEDHAR\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\FunDooNoteApp\\CommonLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SREEDHAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -181,10 +177,6 @@
               "target": "Package",
               "version": "[6.5.0, )"
             },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
-            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.32.1, )"
@@ -206,21 +198,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.413\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj": {
+    "D:\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj",
+        "projectUniqueName": "D:\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj",
         "projectName": "RepoLayer",
-        "projectPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\RepoLayer\\obj\\",
+        "projectPath": "D:\\repos\\FunDooNoteApp\\RepoLayer\\RepoLayer.csproj",
+        "packagesPath": "C:\\Users\\SREEDHAR\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\FunDooNoteApp\\RepoLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SREEDHAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -234,8 +226,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj": {
-                "projectPath": "C:\\Users\\acer\\source\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj"
+              "D:\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj": {
+                "projectPath": "D:\\repos\\FunDooNoteApp\\CommonLayer\\CommonLayer.csproj"
               }
             }
           }
@@ -290,10 +282,6 @@
               "target": "Package",
               "version": "[6.5.0, )"
             },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
-            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.32.1, )"
@@ -315,7 +303,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.413\\RuntimeIdentifierGraph.json"
         }
       }
     }
